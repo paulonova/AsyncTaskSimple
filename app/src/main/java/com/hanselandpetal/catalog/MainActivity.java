@@ -1,7 +1,10 @@
 package com.hanselandpetal.catalog;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -10,12 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /*
 * TODO: Executing multiple tasks in parallel by using "task.executeOnExecutor"
+* 		Checking if connection is on!
 * */
 
 public class MainActivity extends Activity {
@@ -48,15 +53,36 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_do_task) {
-			MyTask task = new MyTask();
-			task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "Param 1", "Param 2", "Param 3");
+			if(isOnline()){
+				requestData();
+			}else{
+				Toast.makeText(this, "Network isn´t available!", Toast.LENGTH_LONG).show();
+			}
 		}
 		return false;
+	}
+
+	private void requestData() {
+		MyTask task = new MyTask();
+		task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "Param 1", "Param 2", "Param 3");
 	}
 
 	protected void updateDisplay(String message) {
 		output.append(message + "\n");
 	}
+
+
+	protected boolean isOnline(){
+		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo netInfo = cm.getActiveNetworkInfo();
+
+		if(netInfo != null && netInfo.isConnectedOrConnecting()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 
 
 	private class MyTask extends AsyncTask<String, String, String >{
