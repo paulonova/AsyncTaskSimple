@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_do_task) {
 			if(isOnline()){
-				requestData("http://services.hanselandpetal.com/feeds/flowers.json");
+				requestData("http://services.hanselandpetal.com/secure/flowers.json");
 			}else{
 				Toast.makeText(this, "Network isn´t available!", Toast.LENGTH_LONG).show();
 			}
@@ -120,18 +120,22 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 
+			tasks.remove(this);
+			if(tasks.size() == 0){
+				pb.setVisibility(View.INVISIBLE);
+			}
+
+			if(result == null){
+				Toast.makeText(MainActivity.this, "Can´t connect to web service!", Toast.LENGTH_LONG).show();
+				return;
+			}
+
 			//For XML files!
 			//flowerList = FlowerXMLParser.parseFeed(result);
 
 			//For JSON files..
 			flowerList = FlowerJSONParser.parseFeed(result);
 			updateDisplay();
-
-			tasks.remove(this);
-			if(tasks.size() == 0){
-				pb.setVisibility(View.INVISIBLE);
-			}
-
 		}
 
 
