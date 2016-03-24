@@ -10,6 +10,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class FlowerJSONParser {
+
+	/*
+	* This class implements the JASON parse!*/
 	
 	public static List<Flower> parseFeed(String content) {
 	

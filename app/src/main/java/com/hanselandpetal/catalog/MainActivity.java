@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import parsers.FlowerJSONParser;
 import parsers.FlowerXMLParser;
 
 /*
@@ -58,7 +59,7 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_do_task) {
 			if(isOnline()){
-				requestData("http://services.hanselandpetal.com/feeds/flowers.xml");
+				requestData("http://services.hanselandpetal.com/feeds/flowers.json");
 			}else{
 				Toast.makeText(this, "Network isn´t available!", Toast.LENGTH_LONG).show();
 			}
@@ -77,6 +78,7 @@ public class MainActivity extends Activity {
 
 			for(Flower flower : flowerList){
 				output.append(flower.getName() + "\n");
+
 			}
 		}
 
@@ -118,7 +120,11 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 
-			flowerList = FlowerXMLParser.parseFeed(result);
+			//For XML files!
+			//flowerList = FlowerXMLParser.parseFeed(result);
+
+			//For JSON files..
+			flowerList = FlowerJSONParser.parseFeed(result);
 			updateDisplay();
 
 			tasks.remove(this);
