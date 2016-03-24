@@ -113,7 +113,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 
-			String content = HTTPManager.getData(params[0]);
+			String content = HTTPManager.getData(params[0], "feeduser", "feedpassword" );
 			return content;
 		}
 
