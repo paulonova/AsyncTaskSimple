@@ -42,23 +42,23 @@ public class HTTPManager {
 
         try {
             URL url = new URL(uri);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
             StringBuilder sb = new StringBuilder();
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
             String line;
-            while((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
             }
 
             return sb.toString();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
-
-        }finally {
-            if(reader != null){
+        } finally {
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -67,9 +67,7 @@ public class HTTPManager {
                 }
             }
         }
+
     }
-
-
-
 
 }

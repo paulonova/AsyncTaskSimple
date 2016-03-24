@@ -18,6 +18,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import parsers.FlowerXMLParser;
+
 /*
 *  Executing multiple tasks in parallel by using "task.executeOnExecutor"
 *  Checking if connection is on!
@@ -28,6 +30,7 @@ public class MainActivity extends Activity {
 	TextView output;
 	ProgressBar pb;
 	List<MyTask> tasks;
+	List<Flower> flowerList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class MainActivity extends Activity {
 		tasks = new ArrayList<>();
 
 	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,8 +71,15 @@ public class MainActivity extends Activity {
 		task.execute(uri);
 	}
 
-	protected void updateDisplay(String message) {
-		output.append(message + "\n");
+	protected void updateDisplay() {
+
+		if(flowerList != null){
+
+			for(Flower flower : flowerList){
+				output.append(flower.getName() + "\n");
+			}
+		}
+
 	}
 
 
@@ -89,7 +100,8 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPreExecute() {
-			updateDisplay("Starting task..");
+			//updateDisplay("Starting task..");
+
 			if(tasks.size() == 0){
 				pb.setVisibility(View.VISIBLE);
 			}
@@ -105,7 +117,9 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			updateDisplay(result);
+
+			flowerList = FlowerXMLParser.parseFeed(result);
+			updateDisplay();
 
 			tasks.remove(this);
 			if(tasks.size() == 0){
@@ -117,7 +131,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onProgressUpdate(String... values) {
-			updateDisplay(values[0]);
+			//updateDisplay(values[0]);
 		}
 	}
 
