@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-* TODO: Executing multiple tasks in parallel by using "task.executeOnExecutor"
-* 		Checking if connection is on!
+*  Executing multiple tasks in parallel by using "task.executeOnExecutor"
+*  Checking if connection is on!
 * */
 
 public class MainActivity extends Activity {
