@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <string name="app_name">Catalog</string>
     <string name="do_task">Do task</string>
+    <string name="flower_name_placeholder">Flower name</string>
     <string name="hello_world">Hello world!</string>
     <string name="placeholder">Placeholder</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">

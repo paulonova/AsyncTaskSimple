@@ -5,5 +5,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="do_task">Do task</string>
     <string name="placeholder">Placeholder</string>
+    <string name="flower_name_placeholder">Flower name</string>
 
 </resources>

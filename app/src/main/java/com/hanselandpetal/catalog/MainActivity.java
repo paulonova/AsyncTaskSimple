@@ -1,8 +1,7 @@
 package com.hanselandpetal.catalog;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -19,14 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import parsers.FlowerJSONParser;
-import parsers.FlowerXMLParser;
 
 /*
 *  Executing multiple tasks in parallel by using "task.executeOnExecutor"
 *  Checking if connection is on!
 * */
 
-public class MainActivity extends Activity {
+public class MainActivity extends ListActivity {
 
 	TextView output;
 	ProgressBar pb;
@@ -39,8 +37,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 //		Initialize the TextView for vertical scrolling
-		output = (TextView) findViewById(R.id.textView);
-		output.setMovementMethod(new ScrollingMovementMethod());
+		output = (TextView) findViewById(R.id.textView1);
+		//output.setMovementMethod(new ScrollingMovementMethod());
 		pb = (ProgressBar)findViewById(R.id.progressBar1);
 		pb.setVisibility(View.INVISIBLE);
 
@@ -73,14 +71,9 @@ public class MainActivity extends Activity {
 	}
 
 	protected void updateDisplay() {
-
-		if(flowerList != null){
-
-			for(Flower flower : flowerList){
-				output.append(flower.getName() + "\n");
-
-			}
-		}
+		//Use FlowerAdapter to display data..
+		FlowerAdapter adapter = new FlowerAdapter(this, R.layout.item_flower, flowerList);
+		setListAdapter(adapter);
 
 	}
 
