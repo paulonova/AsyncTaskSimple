@@ -2,11 +2,12 @@ package com.hanselandpetal.catalog;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +34,13 @@ public class MainActivity extends ListActivity {
 	List<MyTask> tasks;
 	List<Flower> flowerList;
 
+	private static final String PHOTOS_BASE_URL = "http://services.hanselandpetal.com/photos/";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-//		Initialize the TextView for vertical scrolling
-		output = (TextView) findViewById(R.id.textView1);
-		//output.setMovementMethod(new ScrollingMovementMethod());
 		pb = (ProgressBar)findViewById(R.id.progressBar1);
 		pb.setVisibility(View.INVISIBLE);
 
@@ -91,7 +93,7 @@ public class MainActivity extends ListActivity {
 
 
 
-	private class MyTask extends AsyncTask<String, String, String >{
+	private class MyTask extends AsyncTask<String, String, List<Flower>> {
 
 		@Override
 		protected void onPreExecute() {
@@ -104,14 +106,30 @@ public class MainActivity extends ListActivity {
 		}
 
 		@Override
-		protected String doInBackground(String... params) {
+		protected List<Flower> doInBackground(String... params) {
 
 			String content = HTTPManager.getData(params[0], "feeduser", "feedpassword" );
-			return content;
+			flowerList = FlowerJSONParser.parseFeed(content);
+
+			for (Flower flower : flowerList) {
+
+				try {
+					String imageUrl = PHOTOS_BASE_URL + flower.getPhoto();
+					InputStream in = (InputStream) new URL(imageUrl).getContent();
+					Bitmap bitmap = BitmapFactory.decodeStream(in);
+					flower.setBitmap(bitmap);
+					in.close();
+
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+			
+			return flowerList;
 		}
 
 		@Override
-		protected void onPostExecute(String result) {
+		protected void onPostExecute(List<Flower> result) {
 
 			tasks.remove(this);
 			if(tasks.size() == 0){
@@ -127,7 +145,7 @@ public class MainActivity extends ListActivity {
 			//flowerList = FlowerXMLParser.parseFeed(result);
 
 			//For JSON files..
-			flowerList = FlowerJSONParser.parseFeed(result);
+			flowerList = result;
 			updateDisplay();
 		}
 

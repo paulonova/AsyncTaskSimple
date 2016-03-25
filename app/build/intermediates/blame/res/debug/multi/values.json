@@ -11,7 +11,14 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\dimens.xml"
+                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 88,
+                        "endColumn": 57,
+                        "endOffset": 141
+                    }
                 }
             },
             {
@@ -23,7 +30,14 @@
                     "endOffset": 164
                 },
                 "from": {
-                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\dimens.xml"
+                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 146,
+                        "endColumn": 55,
+                        "endOffset": 197
+                    }
                 }
             },
             {
@@ -35,7 +49,14 @@
                     "endOffset": 209
                 },
                 "from": {
-                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 44,
+                        "endOffset": 96
+                    }
                 }
             },
             {
@@ -47,7 +68,14 @@
                     "endOffset": 253
                 },
                 "from": {
-                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 154,
+                        "endColumn": 43,
+                        "endOffset": 193
+                    }
                 }
             },
             {
@@ -78,7 +106,14 @@
                     "endOffset": 370
                 },
                 "from": {
-                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 101,
+                        "endColumn": 52,
+                        "endOffset": 149
+                    }
                 }
             },
             {
@@ -90,7 +125,14 @@
                     "endOffset": 422
                 },
                 "from": {
-                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 198,
+                        "endColumn": 51,
+                        "endOffset": 245
+                    }
                 }
             },
             {
@@ -103,7 +145,15 @@
                     "endOffset": 713
                 },
                 "from": {
-                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\styles.xml"
+                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 186,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 472
+                    }
                 }
             },
             {
@@ -116,7 +166,15 @@
                     "endOffset": 873
                 },
                 "from": {
-                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\styles.xml"
+                    "file": "D:\\LINDA_ANDROID_APP_DEVELOPMENT\\WEB SERVICES\\FlowerCatalog\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 510,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 665
+                    }
                 }
             }
         ]

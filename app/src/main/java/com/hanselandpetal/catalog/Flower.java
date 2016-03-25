@@ -1,6 +1,8 @@
 package com.hanselandpetal.catalog;
 
 
+import android.graphics.Bitmap;
+
 public class Flower {
 
     private int productId;
@@ -10,6 +12,17 @@ public class Flower {
     private double price;
     private String photo;
 
+    //Create a new field Bitmap to store the photos
+    private Bitmap bitmap;
+
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
 
     public int getProductId() {
         return productId;
