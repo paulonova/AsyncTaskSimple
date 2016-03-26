@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +23,21 @@ public class FlowerAdapter extends ArrayAdapter<Flower> {
     private Context context;
     private List<Flower> flowerList;
 
+    //Cache for my images!
+    private LruCache<Integer,Bitmap> imageCache;
+
 
 
     public FlowerAdapter(Context context, int resource, List<Flower> objects) {
         super(context, resource, objects);
         this.context = context;
         this.flowerList = objects;
+
+        //Here I set the Memory cache that I will work with!
+        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        //cache is 1/8 of all memory i have
+        final int cacheSize = maxMemory / 8;
+        imageCache = new LruCache<>(cacheSize);
 
     }
 
@@ -43,7 +53,11 @@ public class FlowerAdapter extends ArrayAdapter<Flower> {
         tv.setText(flower.getName());
 
         //Display flower photo in ImageView widget
-        if(flower.getBitmap() != null){
+
+        //give me the bitmap that is associate with ProductId
+        Bitmap bitmap = imageCache.get(flower.getProductId());
+
+        if(bitmap != null){
             ImageView image = (ImageView) view.findViewById(R.id.imageView1);
             image.setImageBitmap(flower.getBitmap());
 
@@ -108,7 +122,9 @@ public class FlowerAdapter extends ArrayAdapter<Flower> {
                 image.setImageBitmap(result.bitmap);
 
                 //Saving for future uses..
-                result.flower.setBitmap(result.bitmap);
+                //result.flower.setBitmap(result.bitmap);
+
+                imageCache.put(result.flower.getProductId(), result.bitmap);
 
 
             }
